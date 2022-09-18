@@ -11,80 +11,26 @@
     <link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      .b-example-divider {
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-      }
-
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-      }
-
-      .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
-      }
-
-      .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
-      }
-
-      .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-      }
     </style>
 
     
     <!-- Custom styles for this template -->
-    <link href="/sign-in/signin.css" rel="stylesheet">
+    <link href="/styles/style.css" rel="stylesheet">
   </head>
   <body class="text-center">
 
     <main>
       <header class="p-3 text-bg-dark">
         <div class="container">
-          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-            </a>
-    
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li><a href="#" class="nav-link px-2 text-white">Home</a></li>
-              <li><a href="#" class="nav-link px-2 text-white">Track</a></li>
-              <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start h-auto">
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="font-size: 20px;">
+              <li><a href="/home/" class="nav-link px-2 text-white">Home</a></li>
+              <li><a href="/Track/" class="nav-link px-2 text-white">Track</a></li>
             </ul>
     
             <div class="text-end">
-              <a href="/login/"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
+              <a href="/"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
               <a href="#"><button type="button" class="btn btn-warning">Sign-up</button></a>
             </div>
           </div>
@@ -94,25 +40,30 @@
     
 <main class="form-signin w-100 m-auto">
  
-<form>
+
   <h1 class="h1 mb-3 fw-normal">Ridemap</h1>
   <img class="mb-4" src="https://play-lh.googleusercontent.com/8zaTIIU08o9WVcG5NqOPqe2zKOAH20nTuPvpakvTlryFj25IeBLg2FLMiaWlb3xlr5Nw=w200-rw" alt="ridemap Logo" width="50" height="50">
   <h1 class="h4 mb-3 fw-normal text-muted">Create Account</h1>
 
   <div class="form-floating">
-    <input type="email" class="form-control" id="floatingInput" placeholder="John Richard">
-    <label for="floatingInput">Name</label>
+    <input type="text" class="form-control" id="name" placeholder="John Richard">
+    <label for="name">Name</label>
   </div>
   <div class="form-floating">
-    <input type="email" class="form-control rounded-0 mb-1 mt-1" id="floatingInput" placeholder="name@example.com">
-    <label for="floatingInput">Email address</label>
+    <input type="email" class="form-control rounded-0 mb-1 mt-1" id="mail" placeholder="name@example.com">
+    <label for="mail">Email address</label>
   </div>
   <div class="form-floating">
-    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+    <input type="password" class="form-control" id="password" placeholder="Password">
     <label for="floatingPassword">Password</label>
   </div>
-  <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Sign in</button>
-</form>
+  <button class="w-100 btn btn-lg btn-primary mt-3" type="submit" onclick="userRegister()">Sign in</button>
+  <div class="spinner-border text-primary mt-3" role="status" id="loader" style="visibility: hidden;">
+    <span class="visually-hidden">Loading...</span>
+  </div>
 </main>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+<script src="/scripts/signup.js"></script>
   </body>
 </html>
