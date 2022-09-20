@@ -1,36 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ridemap</title>
-    <link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
-  
-    <!-- Custom styles for this template -->
-    <link href="/styles/style.css" rel="stylesheet">
-  </head>
-  <body class="text-center">
-    <main>
-      <header class="p-3 text-bg-dark">
-        <div class="container">
-          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="font-size: 20px;">
-              <li><a href="/home/" class="nav-link px-2 text-white">Home</a></li>
-              <li><a href="/Track/" class="nav-link px-2 text-white">Track</a></li>
-            </ul>
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li><strong><a href="#" class="h2 nav-link px-2 text-white" style="font-size: 25px;">Ridemap</a></strong></li>
-            </ul>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link rel="stylesheet" href="/assets/dist/css/bootstrap.min.css">
+    <style>
+        @keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-20px);
+  }
+  100% {
     
-            <div class="text-end">
-                <a href="/"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
-                <a href="/sign-in/"><button type="button" class="btn btn-warning">Sign-up</button></a>
+    transform: translatey(0px);
+  }
+}
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container">
+            <a href="#" class="navbar-brand"><h1>Ride Map</h1></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="track" class="nav-link">Track</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="spot" class="nav-link">Spot</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">Login</a>
+                    </li>
+                </ul>
             </div>
-          </div>
         </div>
-      </header>
-    </main>
-</body>
+    </nav>
+
+    <!--showcase-->
+
+    <section class="vh-100 bg-dark text-light p-5 text-center">
+        <div class="container">
+            <div class="d-sm-flex">
+                <div>
+                    <h1>Track Your <span class="text-warning">Bus</span></h1>
+                    <p class="lead my-5">
+                        The bus tracking system ensures vehicle safety, regular monitoring of vehicle, location tracking, detailed reports of buses such as speed report, Geofence report, vehicle idle report, parking report, engine on/off status. 
+                    </p>
+                    <img class="img-fluid ms-auto " src="/img/welcome.png" style="animation: float 6s ease-in-out infinite;"/>
+                </div>
+                
+
+            </div>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  </body>
 </html>
