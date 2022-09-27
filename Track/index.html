@@ -7,18 +7,18 @@
     <title>Ridemap Tracker</title>
 
     <link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
-  
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css' rel='stylesheet' />
     <!-- Custom styles for this template -->
     <link href="/styles/style.css" rel="stylesheet">
     <style>
       .btn-outline-light {
     --bs-btn-color: #ff5a5a;
     --bs-btn-border-color: #ff5a5a;
-    --bs-btn-hover-color: #f8f8f8;
+    --bs-btn-hover-color: #000;
     --bs-btn-hover-bg: #ff5a5a;
     --bs-btn-hover-border-color: #ff5a5a;
     --bs-btn-focus-shadow-rgb: 248,249,250;
-    --bs-btn-active-color: #f8f8f8;
+    --bs-btn-active-color: #ff5a5a;
     --bs-btn-active-bg: #ff5a5a;
     --bs-btn-active-border-color: #f8f9fa;
     --bs-btn-active-shadow: inset 0 3px 5pxrgba(0, 0, 0, 0.125);
@@ -29,29 +29,35 @@
 }
     </style>
   </head>
-  <body class="text-center">
-    <main>
-      <header class="p-3 text-bg-dark">
-        <div class="container">
-          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="font-size: 20px;">
-              <li><a href="/home/" class="nav-link px-2 text-white">Home</a></li>
-              <li><a href="#" class="nav-link px-2 text-white">Track</a></li>
-            </ul>
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li><strong><a href="#" class="h2 nav-link px-2 text-white" style="font-size: 25px;">Ridemap</a></strong></li>
-            </ul>
-    
-            <div class="text-end">
-              <button type="button" class="btn btn-outline-light me-2" onclick="userLogout()">Logout</button>
-            </div>
+  <body class="map-page">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+          <div class="container">
+              <a href="#" class="navbar-brand"><h1>Ride Map</h1></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navmenu">
+                  <ul class="navbar-nav ms-auto">
+                      <li class="nav-item">
+                          <a href="track" class="nav-link">Track</a>
+                      </li>
+                      <li class="nav-item">
+                          <a href="spot" class="nav-link">Spot</a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="spot" class="nav-link text-danger" onclick="userLogout()">Logout</a>
+                      </li>
+                  </ul>
+              </div>
           </div>
-        </div>
-      </header>
-    </main>
+      </nav>
+      <div id='map' class="map-page"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
     <script src="/scripts/script.js"></script>
 </body>
 </html>
