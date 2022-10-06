@@ -1,11 +1,12 @@
 const firebaseConfig = {
-    apiKey: "AIzaSyAVUwDTbuHC1Jy_TXWYqTSK_CB3HuYzihY",
-    authDomain: "test-auth-9db81.firebaseapp.com",
-    projectId: "test-auth-9db81",
-    storageBucket: "test-auth-9db81.appspot.com",
-    messagingSenderId: "1051026752151",
-    appId: "1:1051026752151:web:6dd467dd97ae9359269fd2",
-    databaseURL: "https://test-auth-9db81-default-rtdb.firebaseio.com"
+  apiKey: "AIzaSyBc0IwjyR4tpUVZCUFHvTT0sG2PkIok-uE",
+  authDomain: "bustrack-master-4809b.firebaseapp.com",
+  databaseURL: "https://bustrack-master-4809b-default-rtdb.firebaseio.com",
+  projectId: "bustrack-master-4809b",
+  storageBucket: "bustrack-master-4809b.appspot.com",
+  messagingSenderId: "82104326324",
+  appId: "1:82104326324:web:787704d8722450ce04dfe1",
+  measurementId: "G-CXS44NEY51"
 
 }
 

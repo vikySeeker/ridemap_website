@@ -7,26 +7,27 @@
     <title>Ridemap Tracker</title>
 
     <link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />  
     <!-- Custom styles for this template -->
     <link href="/styles/style.css" rel="stylesheet">
     <style>
-      .btn-outline-light {
-    --bs-btn-color: #ff5a5a;
-    --bs-btn-border-color: #ff5a5a;
-    --bs-btn-hover-color: #000;
-    --bs-btn-hover-bg: #ff5a5a;
-    --bs-btn-hover-border-color: #ff5a5a;
-    --bs-btn-focus-shadow-rgb: 248,249,250;
-    --bs-btn-active-color: #ff5a5a;
-    --bs-btn-active-bg: #ff5a5a;
-    --bs-btn-active-border-color: #f8f9fa;
-    --bs-btn-active-shadow: inset 0 3px 5pxrgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #f8f9fa;
-    --bs-btn-disabled-bg: transparent;
-    --bs-btn-disabled-border-color: #f8f9fa;
-    --bs-gradient: none;
-}
+    .btn-outline-light {
+        --bs-btn-color: #ff5a5a;
+        --bs-btn-border-color: #ff5a5a;
+        --bs-btn-hover-color: #000;
+        --bs-btn-hover-bg: #ff5a5a;
+        --bs-btn-hover-border-color: #ff5a5a;
+        --bs-btn-focus-shadow-rgb: 248,249,250;
+        --bs-btn-active-color: #ff5a5a;
+        --bs-btn-active-bg: #ff5a5a;
+        --bs-btn-active-border-color: #f8f9fa;
+        --bs-btn-active-shadow: inset 0 3px 5pxrgba(0, 0, 0, 0.125);
+        --bs-btn-disabled-color: #f8f9fa;
+        --bs-btn-disabled-bg: transparent;
+        --bs-btn-disabled-border-color: #f8f9fa;
+        --bs-gradient: none;
+    }
     </style>
   </head>
   <body class="map-page">
@@ -38,14 +39,36 @@
               </button>
               <div class="collapse navbar-collapse" id="navmenu">
                   <ul class="navbar-nav ms-auto">
-                      <li class="nav-item">
+                      <!-- <li class="nav-item">
                           <a href="track" class="nav-link">Track</a>
+                      </li> -->
+                      <li class="nav-item">
+                          <!-- <a href="spot" class="nav-link">Spot</a> -->
+                          <button class="nav-link bg-dark btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Spot Bus</button>
+                          <!-- Modal -->
+                          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h1 class="modal-title fs-5" id="exampleModalLabel">Select Bus</h1>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="btn-group-vertical" aria-label="Basic example">
+                                        <button type="button" class="btn btn-white text-dark" onclick="spotBus()">1</button>
+                                        <button type="button" class="btn btn-white text-dark" onclick="spotBus()">2</button>
+                                        <button type="button" class="btn btn-white text-dark" onclick="spotBus()">3</button>
+                                      </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Spot Now</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                       </li>
                       <li class="nav-item">
-                          <a href="spot" class="nav-link">Spot</a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="spot" class="nav-link text-danger" onclick="userLogout()">Logout</a>
+                        <button class="nav-link text-danger bg-dark btn" onclick="userLogout()">Logout</button>
                       </li>
                   </ul>
               </div>
@@ -57,7 +80,8 @@
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
-    <script src="/scripts/script.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js" integrity="sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s=" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+    <script src="/scripts/scriptLeaflet.js" defer></script>
 </body>
 </html>
