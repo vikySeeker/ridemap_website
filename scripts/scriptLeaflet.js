@@ -1,15 +1,3 @@
-// var map = L.map('map', {
-//     center: [35.689487,139.691706],
-//     zoom: 16,
-// });
-// L.marker([35.689487,139.691706]).addTo(map);
-// var mapboxTile = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoidmlnbmVzaG1hZ2FsaW5nYW0iLCJhIjoiY2w4YmFjenI1MGEwZDN4cGM3ZXBoYmsxcCJ9.gL9szMP3DGcuTfvg9ld52g', {
-//     attribution : 'Ridemap'
-//     //attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-// });
-
-
-
 const firebaseConfig = {
   apiKey: "AIzaSyBc0IwjyR4tpUVZCUFHvTT0sG2PkIok-uE",
   authDomain: "bustrack-master-4809b.firebaseapp.com",
@@ -30,7 +18,9 @@ firebase.auth().onAuthStateChanged(user => {
       //console.log(user)
       //spotBus();
       if(navigator.geolocation){
-        navigator.geolocation.watchPosition(userLoc,error1)
+        setInterval(()=>{
+          navigator.geolocation.getCurrentPosition(userLoc,error);
+        },1000)
       }else{
         error();
       }
@@ -39,24 +29,15 @@ firebase.auth().onAuthStateChanged(user => {
     }
 })
 
-function error1(){
-  window.alert("testing...")
-}
-const database = firebase.database()
-
 function userLogout(){
-    firebase.auth().signOut().then(() => {
-        // Sign-out successful.
-         window.open("/","_self")
-    }).catch((error) => {
-         console.log(error)
-         // An error happened.
-      });
+  firebase.auth().signOut().then(() => {
+      // Sign-out successful.
+       window.open("/","_self")
+  }).catch((error) => {
+       console.log(error)
+       // An error happened.
+    });
 }
-
-// setInterval(() => {
-//     navigator.geolocation.getCurrentPosition(setup,error)
-// },1000)
 
 var userMarker,vehicleMarker,circle,vehiclePos,userPos;
 var googleTiles = L.tileLayer('https://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}',{
@@ -71,62 +52,48 @@ var map = L.map('map', {
 googleTiles.addTo(map);
 
 var myIcon = L.icon({
-  iconUrl: '/img/marker_icon.png',
-  iconSize: [60, 58],
-  iconAnchor: [22, 94],
-  //popupAnchor: [-3, -76],
+  iconUrl: '/img/busMarker.png',
+  iconSize: [60,58],
+  iconAnchor: [29,60],
+  popupAnchor: [0, -55],
 });
-// function mapInit(){
-//     if(!navigator.geolocation){
-//         window.alert("Location service not found!");
-//     }else{
-//         setInterval(() => {
-//             navigator.geolocation.getCurrentPosition(success,error,{ enableHighAccuracy: true})
-//         },1000)
-//     }
+
+//function to handle location serive succes
+
+
+// function success(position){
+//   console.log(position)
+//   setup(position)
 // }
 
-
-function success(position){
-  console.log(position)
-  setup(position)
-}
-
-
+//function to handle location serive failure...
 
 function error(err){
   window.alert("location service not available!" )
-  setup([72,19])
+  setup([12.222623,79.6500342])
 }
 
+//function to get vehicle coordinates
 
 function vehicleLoc(position,speed){
     var lat = position[0];
     var long = position[1];
     vehiclePos=[lat,long];
-    //var accuracy = position.coords.accuracy;
     if(vehicleMarker){
         map.removeLayer(vehicleMarker);
     }
-    // if(circle){
-    //     map.removeLayer(circle);
-    // }
-    vehicleMarker = L.marker([lat,long]).addTo(map);
-    console.log(vehicleMarker);
-    map.panTo([lat,long]);
-    //circle = L.circle([lat,long],{radius: accuracy});
-    //var featureGroup = L.featureGroup([marker,circle]).addTo(map);
-    //console.log(accuracy)
-    route(vehiclePos[0],userPos[0],vehiclePos[1],userPos[1])
     var eta=(distance(vehiclePos[0],userPos[0],vehiclePos[1],userPos[1])/speed)*60;
     console.log("Estimated time of arrival:"+eta);
-
-  //pushDummyValue()
-
+    vehicleMarker = L.marker([lat,long],{icon: myIcon}).addTo(map).bindPopup("Your bus will arrive in<br>"+parseInt(eta)+"mins approx"  ).openPopup();
+    console.log(vehicleMarker);
+    map.panTo([lat,long]);
  }
 
 
- function userLoc(position){
+//function to get user coordinates
+
+
+function userLoc(position){
   var lat = position.coords.latitude;
   var long = position.coords.longitude;
   var accuracy = position.coords.accuracy;
@@ -143,29 +110,12 @@ function vehicleLoc(position,speed){
   //map.panTo([lat,long]);
   circle = L.circle([lat,long],{radius: accuracy});
   var featureGroup = L.featureGroup([userMarker,circle]).addTo(map);
-  //console.log(accuracy)
-//pushDummyValue()
-
 }
 
-function route(vehiclePosLat,userPosLat,vehiclePosLong,userPosLong){
-  var res=L.Routing.control({
-    waypoints: [
-      L.latLng(vehiclePosLat, vehiclePosLong),
-      L.latLng(userPosLat, userPosLong)
-    ]
-  }).addTo(map);
-  console.log("Routing data...:"+L.Routing.control({
-    waypoints: [
-      L.latLng(vehiclePosLat, vehiclePosLong),
-      L.latLng(userPosLat, userPosLong)
-    ]
-  }));
-}
 
-function distance(lat1,
-  lat2, lon1, lon2)
-{
+//returns distance between two coordinates
+
+function distance(lat1, lat2, lon1, lon2){
 
 // The math module contains a function
 // named toRadians which converts from
@@ -191,14 +141,37 @@ let r = 6371;
 // calculate the result
 return(c * r);
 }
- function spotBus(){
-   firebase.database().ref('/driver_available/ubBSfDgW5bND2e8Oaeo79MnJRRm2/l').on('value',(coords) => {
-    console.log('getting data')
-    var position = [coords.child('0').val(),coords.child('1').val()];
-    //var long = coords.child('long').val();
-     vehicleLoc(position,coords.child('2').val());
-     console.log(position);
-   })   
- }
+
+//funtion to invoke firebase database to get vehicle coordinates
+
+function spotBus(){
+  firebase.database().ref('/driver_available/ubBSfDgW5bND2e8Oaeo79MnJRRm2/l').on('value',(coords) => {
+   console.log('getting data')
+   var position = [coords.child('0').val(),coords.child('1').val()];
+   //var long = coords.child('long').val();
+    vehicleLoc(position,coords.child('2').val());
+    console.log(position);
+  })   
+}
 
 
+/*
+
+route function utilize leaflet-routing machine to find ways between two points...
+ */
+
+
+// function route(vehiclePosLat,userPosLat,vehiclePosLong,userPosLong){
+//   var res=L.Routing.control({
+//     waypoints: [
+//       L.latLng(vehiclePosLat, vehiclePosLong),
+//       L.latLng(userPosLat, userPosLong)
+//     ]
+//   }).addTo(map);
+//   console.log("Routing data...:"+L.Routing.control({
+//     waypoints: [
+//       L.latLng(vehiclePosLat, vehiclePosLong),
+//       L.latLng(userPosLat, userPosLong)
+//     ]
+//   }));
+// }
