@@ -45,16 +45,15 @@ var googleTiles = L.tileLayer('https://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z
     subdomains:['mt0','mt1','mt2','mt3']
 });
 var map = L.map('map', {
-    center: [11.1271,78.6569],
+    center: [11.922666,79.626771],
     zoom: 20,
     zoomControl : false
 });
 googleTiles.addTo(map);
 
 var myIcon = L.icon({
-  iconUrl: '/img/busMarker.png',
+  iconUrl: '/img/marker_icon.png',
   iconSize: [60,58],
-  iconAnchor: [29,60],
   popupAnchor: [0, -55],
 });
 
@@ -83,8 +82,14 @@ function vehicleLoc(position,speed){
         map.removeLayer(vehicleMarker);
     }
     var eta=(distance(vehiclePos[0],userPos[0],vehiclePos[1],userPos[1])/speed)*60;
+    console.log(eta)
+    var popupmessage="<b>ETA: </b>"+parseInt(eta)+" mins approx<br><b>Speed:</b>"+speed;
+    // if(typeof(eta)===typeof(NaN)){
+    //   eta=0;
+    //   popupmessage="<b>ETA: </b>"+parseInt(eta)+" mins approx<br><b>Speed:</b>"+speed
+    // }
     console.log("Estimated time of arrival:"+eta);
-    vehicleMarker = L.marker([lat,long],{icon: myIcon}).addTo(map).bindPopup("Your bus will arrive in<br>"+parseInt(eta)+"mins approx"  ).openPopup();
+    vehicleMarker = L.marker([lat,long],{icon: myIcon}).addTo(map).bindPopup(popupmessage).openPopup();
     console.log(vehicleMarker);
     map.panTo([lat,long]);
  }
