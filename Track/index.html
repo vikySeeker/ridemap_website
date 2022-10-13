@@ -13,6 +13,7 @@
     <link href="/styles/style.css" rel="stylesheet">
     <style>
     .btn-outline-light {
+      
         --bs-btn-color: #ff5a5a;
         --bs-btn-border-color: #ff5a5a;
         --bs-btn-hover-color: #000;
@@ -31,33 +32,56 @@
     </style>
   </head>
   <body class="map-page">
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <nav class="position-relative navbar navbar-expand-lg bg-dark navbar-dark">
           <div class="container">
-              <a href="#" class="navbar-brand"><h1>Ride Map</h1></a>
+              <a href="#" class="navbar-brand fw-bold text-white"><h1><b>RideMap</b></h1></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                   <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navmenu">
-                  <ul class="navbar-nav ms-auto">
+                  <ul class=" nav  justify-content-center ms-auto">
                       <!-- <li class="nav-item">
                           <a href="track" class="nav-link">Track</a>
                       </li> -->
                       <li class="nav-item">
                           <!-- <a href="spot" class="nav-link">Spot</a> -->
-                          <button class="nav-link bg-dark btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Spot Bus</button>
+                          <button class="nav-link text-light btn btn-outline-primary me-3 fw-bold rounded-5" data-bs-toggle="modal" data-bs-target="#exampleModal">Spot Bus</button>
                           <!-- Modal -->
                           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
+                            <div class="modal-dialog h-50 modal-dialog-scrollable">
                               <div class="modal-content">
                                 <div class="modal-header">
                                   <h1 class="modal-title fs-5" id="exampleModalLabel">Select Bus</h1>
                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="btn-group-vertical" aria-label="Basic example">
-                                        <button type="button" class="btn btn-white text-dark" onclick="spotBus()" data-bs-dismiss="modal">1</button>
-                                        <button type="button" class="btn btn-white text-dark" onclick="spotBus()" data-bs-dismiss="modal">2</button>
-                                        <button type="button" class="btn btn-white text-dark" onclick="spotBus()" data-bs-dismiss="modal">24</button>
+                                    <div class="btn-group-vertical w-100" aria-label="Basic example">
+                                        <button type="button" class="btn btn-light text-dark" onclick="spotBus()" data-bs-dismiss="modal">1</button>
+                                        <button type="button" class="btn btn-light text-dark "  onclick="spotBus()" data-bs-dismiss="modal">2</button>
+                                        <button type="button" class="btn btn-light text-dark " onclick="spotBus()" data-bs-dismiss="modal">3</button>
+                                        <button type="button" class="btn btn-light text-dark " onclick="spotBus()" data-bs-dismiss="modal">4</button>
+                                        <button type="button" class="btn btn-light text-dark" onclick="spotBus()" data-bs-dismiss="modal">5</button>
+                                        <button type="button" class="btn btn-light text-dark" onclick="spotBus()" data-bs-dismiss="modal">6</button>
+                                        <button type="button" class="btn btn-light text-dark " onclick="spotBus()" data-bs-dismiss="modal">7</button>
+                                        <button type="button" class="btn btn-light text-dark" onclick="spotBus()" data-bs-dismiss="modal">8</button>
+                                        <button type="button" class="btn btn-light text-dark" onclick="spotBus()" data-bs-dismiss="modal">9</button>
+                                        <button type="button" class="btn btn-light text-dark " onclick="spotBus()" data-bs-dismiss="modal">10</button>
+                                        <button type="button" class="btn btn-light text-dark" onclick="spotBus()" data-bs-dismiss="modal">11</button>
+                                        <button type="button" class="btn btn-light text-dark" onclick="spotBus()" data-bs-dismiss="modal">12</button>
+                                        <button type="button" class="btn btn-light text-dark " onclick="spotBus()" data-bs-dismiss="modal">13</button>
+                                        <button type="button" class="btn btn-light text-dark" onclick="spotBus()" data-bs-dismiss="modal">14</button>
+                                        <button type="button" class="btn btn-light text-dark" onclick="spotBus()" data-bs-dismiss="modal">15</button>
+                                        <button type="button" class="btn btn-light text-dark " onclick="spotBus()" data-bs-dismiss="modal">16</button>
+                                        <button type="button" class="btn btn-light text-dark" onclick="spotBus()" data-bs-dismiss="modal">17</button>
+                                        <button type="button" class="btn btn-light text-dark" onclick="spotBus()" data-bs-dismiss="modal">18</button>
+                                        <button type="button" class="btn btn-light text-dark" onclick="spotBus()" data-bs-dismiss="modal">19</button>
+                                        <button type="button" class="btn btn-light text-dark " onclick="spotBus()" data-bs-dismiss="modal">20</button>
+                                        <button type="button" class="btn btn-light text-dark" onclick="spotBus()" data-bs-dismiss="modal">21</button>
+                                        <button type="button" class="btn btn-light text-dark" onclick="spotBus()" data-bs-dismiss="modal">22</button>
+                                        <button type="button" class="btn btn-light text-dark" onclick="spotBus()" data-bs-dismiss="modal">23</button>
+                                        <button type="button" class="btn btn-light text-dark " onclick="spotBus()" data-bs-dismiss="modal">24</button>
+                                        <button type="button" class="btn btn-light text-dark" onclick="spotBus()" data-bs-dismiss="modal">25</button>
+
                                       </div>
                                 </div>
                                 <div class="modal-footer">
@@ -68,24 +92,25 @@
                           </div>
                       </li>
                       <li class="nav-item">
-                        <button class="nav-link text-danger bg-dark btn" onclick="userLogout()">Logout</button>
+                        <button class="nav-link text-light btn btn-outline-primary me-3 fw-bold rounded-5" onclick="userLogout()">Logout</button>
                       </li>
                   </ul>
               </div>
           </div>
       </nav>
-      <div id='map' class="map-page"></div>
-      <div class="position-relative bottom-0 pb-5 end-0 p-5">
-          <h1>Test</h1>
-          <h1>Test</h1>
-      </div>
+    <div id='map' class="map-page"></div>
+    <div>
+      <button id="loacte">
+        text
+      </button>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.3.1/firebase-messaging.min.js"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script>
     <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js" integrity="sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s=" crossorigin=""></script>
-    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
     <script src="/scripts/scriptLeaflet.js" defer></script>
 </body>
 </html>
